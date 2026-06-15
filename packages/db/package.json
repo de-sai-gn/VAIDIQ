@@ -1,0 +1,46 @@
+{
+  "name": "@vaidiq/db",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/types.ts",
+    "./types": "./src/types.ts",
+    "./server": "./src/server-client.ts",
+    "./mobile": "./src/mobile-client.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "db:start": "supabase start",
+    "db:stop": "supabase stop",
+    "db:reset": "supabase db reset",
+    "db:push": "supabase db push",
+    "db:diff": "supabase db diff",
+    "gen:types": "supabase gen types typescript --local --schema public > src/types.ts"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.45.0",
+    "@vaidiq/config": "workspace:*"
+  },
+  "peerDependencies": {
+    "expo-secure-store": "*",
+    "next": ">=15",
+    "react-native-url-polyfill": "*"
+  },
+  "peerDependenciesMeta": {
+    "expo-secure-store": { "optional": true },
+    "next": { "optional": true },
+    "react-native-url-polyfill": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@vaidiq/eslint-config": "workspace:*",
+    "@vaidiq/typescript-config": "workspace:*",
+    "eslint": "^9.39.1",
+    "expo-secure-store": "^14.0.0",
+    "next": "^15.0.0",
+    "react-native-url-polyfill": "^2.0.0",
+    "typescript": "5.9.2"
+  }
+}

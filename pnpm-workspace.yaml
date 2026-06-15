@@ -1,3 +1,22 @@
 packages:
   - "apps/*"
   - "packages/*"
+# Pin a single React across web + mobile so Expo native builds never see a
+# duplicate react (Expo SDK 56 pins 19.2.3; Next/web is flexible enough to match).
+overrides:
+  react: 19.2.3
+  react-dom: 19.2.3
+allowBuilds:
+  sharp: true
+  unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@expo/cli@56.1.16'
+  - '@expo/config-plugins@56.0.9'
+  - '@expo/config-types@56.0.6'
+  - '@expo/inline-modules@0.0.12'
+  - '@expo/prebuild-config@56.0.16'
+  - expo-font@56.0.7
+  - expo-modules-autolinking@56.0.16
+  - expo-modules-core@56.0.17
+  - expo-modules-jsi@56.0.10
+  - expo@56.0.12

@@ -1,0 +1,39 @@
+# Minimal Supabase CLI config for the @vaidiq/db local stack.
+# Run CLI commands from `packages/db` (this directory's parent of `supabase/`),
+# e.g. `pnpm --filter @vaidiq/db db:start`. Regenerate the canonical, fully
+# annotated file anytime with `supabase init` if the CLI schema evolves.
+
+project_id = "vaidiq"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[db]
+port = 54322
+shadow_port = 54320
+# Match your Supabase project's Postgres major version (Supabase default: 15).
+major_version = 15
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000"]
+jwt_expiry = 3600
+enable_refresh_token_rotation = true
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false
