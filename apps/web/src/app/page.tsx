@@ -1,9 +1,11 @@
 import { APP_NAME, theme, USER_ROLES } from "@vaidiq/config";
 import type { UserRole } from "@vaidiq/db";
+import { Button } from "@/components/ui/button";
 
 // Token-driven utilities (bg-surface, bg-primary, rounded-card, text-sidebar, …)
 // come from the @vaidiq/ui Tailwind preset, which reads @vaidiq/config — proving
-// the shared design tokens flow end-to-end into the web app.
+// the shared design tokens flow end-to-end into the web app. The shadcn <Button>
+// renders in the same VaidIQ green (its --primary is mapped to the brand token).
 export default function Home() {
   const roles: readonly UserRole[] = USER_ROLES;
 
@@ -16,21 +18,25 @@ export default function Home() {
         <h1 className="mt-4 text-2xl font-semibold text-sidebar">
           Monorepo foundation is live
         </h1>
-        <p className="mt-2 text-muted">
-          Shared design tokens, UI preset, and the typed Supabase layer are wired
-          across web &amp; mobile.
+        <p className="mt-2 text-muted-foreground">
+          Shared design tokens, the shadcn/ui base, and the typed Supabase layer
+          are wired across web &amp; mobile.
         </p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {roles.map((role) => (
             <li
               key={role}
-              className="rounded-button border border-border px-2 py-1 text-xs text-muted"
+              className="rounded-button border border-border px-2 py-1 text-xs text-muted-foreground"
             >
               {role}
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-xs text-muted">
+        <div className="mt-6 flex items-center gap-3">
+          <Button>Get started</Button>
+          <Button variant="outline">Docs</Button>
+        </div>
+        <p className="mt-4 text-xs text-muted-foreground">
           primary token →{" "}
           <code className="font-mono text-success">{theme.colors.primary}</code>
         </p>
